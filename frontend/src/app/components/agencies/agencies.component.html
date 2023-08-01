@@ -1,0 +1,50 @@
+<div class="container">
+
+  <div class="search-form">
+    <div class="search-inputs">
+      <input type="text" [(ngModel)]="nameQuery" placeholder="Name (optional)">
+      <input type="text" [(ngModel)]="addressQuery" placeholder="Address (optional)">
+    </div>
+    <div class="sorting-input">
+      <label for="sorting">Sort by:</label>
+      <select id="sorting" [(ngModel)]="sortingOption">
+        <option value="address">Address</option>
+        <option value="name">Name</option>
+      </select>
+      <select id="order" [(ngModel)]="order">
+        <option value="asc">ASC</option>
+        <option value="desc">DESC</option>
+      </select>
+    </div>
+    <div class="search-actions">
+      <button class="confirm" (click)="search()">Search</button>
+      <button class="reset" (click)="reset()">Reset</button>
+    </div>
+
+  </div>
+
+  <div class="wrap" >
+    <ng-container *ngFor="let agencyElem of agencies">
+      <a routerLink="agencies/{{agencyElem.PIB}}" class="card-link">
+        <div class="box">
+          <div class="date">
+            <h4>{{agencyElem.address.street}} {{agencyElem.address.number}}</h4>
+            <h4>{{agencyElem.address.city}}, {{agencyElem.address.country}}</h4>
+          </div>
+          <h1>{{agencyElem.name}}</h1>
+          <img [src]="imgUrl(agencyElem.image)" class="agency-avatar p14" [alt]="agencyElem.description"/>
+        </div>
+      </a>
+    </ng-container>
+  </div>
+
+  <div class="paginator">
+    <mat-paginator [length]="totalCount"
+                   [pageIndex]="currentPage-1"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[6]"
+                   (page)="pageEvent = getDisplayedAgencies($event)">
+    </mat-paginator>
+  </div>
+
+</div>

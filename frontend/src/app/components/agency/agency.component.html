@@ -1,0 +1,67 @@
+<div class="container" >
+  <div class="responsive-container-block container">
+    <div class="responsive-container-block">
+      <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-12 img-one" style="min-width:500px; background-image: url('/assets/golden lines.png'); background-repeat: round">
+<!--        <img alt="golden-lines.png" class="image-block bg-image" src="/assets/golden%20lines.png" style="display:none">-->
+      </div>
+      <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-12 content-one">
+        <div class="agency-image">
+          <img [src]="imgUrl(agency.image)" alt="Agency Image">
+        </div>
+        <p class="text-blk section-head">
+          {{agency.name}}
+        </p>
+        <h3>{{agency.address.street}} {{agency.address.number}}, {{agency.address.city}} {{agency.address.country}}</h3>
+        <p class="text-blk section-text">
+          {{agency.description}}
+        </p>
+        <mat-card *ngIf="user && user.type==='client'">
+          <mat-card-header>
+            Request a service
+          </mat-card-header>
+          <mat-card-content class="basic-info">
+            <mat-error>{{ errorMessage }}</mat-error>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <mat-form-field>
+                <mat-label>Select an object</mat-label>
+                <mat-select formControlName="selectedObject" required (selectionChange)="resetError()">
+                  <mat-option *ngFor="let object of objects" [value]="object._id">
+                    {{ object.type }} / {{ object.squareFootage }} m2 / {{ object.address }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate placeholder="Start date" formControlName="from">
+                  <input matEndDate placeholder="End date" formControlName="to">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+              </mat-form-field>
+              <button mat-raised-button class="submit-button" type="submit">Request Service</button>
+            </form>
+          </mat-card-content>
+        </mat-card>
+        <mat-card>
+          <mat-card-header>
+            Reviews
+          </mat-card-header>
+          <mat-card-content class="comment" *ngFor="let review of reviews">
+            <mat-card>
+              <mat-card-content class="comment-content">
+                <p *ngIf="user"><strong>User:</strong> {{ review.clientUsername }}</p>
+                <p><strong>Comment:</strong> {{ review.review.comment }}</p>
+                <p><strong>Rate:</strong> {{ review.review.rate }}</p>
+              </mat-card-content>
+            </mat-card>
+          </mat-card-content>
+          <mat-card-content class="comment-content" *ngIf="reviews.length==0" >
+            <h2>No reviews</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

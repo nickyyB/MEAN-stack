@@ -1,0 +1,132 @@
+{
+    "_id" : ObjectId("64aafabd6f52b08842917efd"),
+    "agencyUsername" : "nikola4",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "johndoe@example.com",
+    "name" : "John",
+    "speciality" : "Electrician",
+    "surname" : "Doe",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafb366f52b08842917f00"),
+    "agencyUsername" : "nikola4",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "alice.smith@example.com",
+    "name" : "Alice",
+    "speciality" : "Plumber",
+    "surname" : "Smith",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafb436f52b08842917f03"),
+    "agencyUsername" : "nikola4",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "bob.johnson@example.com",
+    "name" : "Bob",
+    "speciality" : "Carpenter",
+    "surname" : "Johnson",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafb5f6f52b08842917f06"),
+    "agencyUsername" : "nikola4",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "emma.davis@example.com",
+    "name" : "Emma",
+    "speciality" : "Painter",
+    "surname" : "Davis",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafb8f6f52b08842917f09"),
+    "agencyUsername" : "nikola5",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "michael.wilson@example.com",
+    "name" : "Michael",
+    "speciality" : "HVAC Technician",
+    "surname" : "Wilson",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafb9c6f52b08842917f0c"),
+    "agencyUsername" : "nikola5",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "sophia.brown@example.com",
+    "name" : "Sophia",
+    "speciality" : "Electrician",
+    "surname" : "Brown",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafba86f52b08842917f0f"),
+    "agencyUsername" : "nikola5",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "james.taylor@example.com",
+    "name" : "James",
+    "speciality" : "Plumber",
+    "surname" : "Taylor",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafbb26f52b08842917f12"),
+    "agencyUsername" : "nikola6",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "olivia.anderson@example.com",
+    "name" : "Olivia",
+    "speciality" : "Carpenter",
+    "surname" : "Anderson",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafbbd6f52b08842917f15"),
+    "agencyUsername" : "nikola6",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "noah.clark@example.com",
+    "name" : "Noah",
+    "speciality" : "Painter",
+    "surname" : "Clark",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64aafbc96f52b08842917f18"),
+    "agencyUsername" : "nikola6",
+    "busy" : false,
+    "contactPhone" : "+1234567890",
+    "email" : "ava.hill@example.com",
+    "name" : "Ava",
+    "speciality" : "HVAC Technician",
+    "surname" : "Hill",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64ab09c2f33fbba3e2cc61b2"),
+    "agencyUsername" : "nikola11",
+    "busy" : false,
+    "contactPhone" : "dasdasdas",
+    "email" : "asadsdasads",
+    "name" : "sdaasddas",
+    "speciality" : "saddasads",
+    "surname" : "saddasdas",
+    "__v" : NumberInt(0)
+}
+{
+    "_id" : ObjectId("64ab09e9f33fbba3e2cc61b8"),
+    "agencyUsername" : "nikola12",
+    "busy" : false,
+    "contactPhone" : "dasdasdas 1",
+    "email" : "dsadasdas",
+    "name" : "dasasdasd 2",
+    "speciality" : "dasadsdas 1",
+    "surname" : "asddasasd 2",
+    "__v" : NumberInt(0)
+}

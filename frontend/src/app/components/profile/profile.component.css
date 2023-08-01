@@ -1,0 +1,62 @@
+.mat-card {
+  margin: 2em auto;
+  text-align: center;
+  display: flex;
+}
+
+.registration-content {
+  padding: 60px 1rem;
+  display: flex;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: goldenrod;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  color: goldenrod;
+  background-color: goldenrod;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: gold;
+}
+
+.submit-button {
+  background-color: goldenrod;
+  color: white;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@media (max-width: 992px) {
+  .mat-card {
+    display: block;
+  }
+}
+
+

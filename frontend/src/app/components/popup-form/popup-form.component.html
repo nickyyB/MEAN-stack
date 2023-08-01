@@ -1,0 +1,27 @@
+<mat-card *ngIf="data.action === 'acceptJob'">
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #priceForm="ngForm">
+      <mat-form-field>
+        <input matInput type="number" placeholder="Price" name="price" [(ngModel)]="sum" required>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!priceForm.valid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+
+<mat-card *ngIf="data.action === 'reviewJob'">
+  <mat-card-content>
+    <form (ngSubmit)="postComment()" #reviewForm="ngForm" class="review">
+      <mat-form-field>
+        <textarea matInput placeholder="Comment" class="area" name="comment" [(ngModel)]="comment" required></textarea>
+      </mat-form-field>
+      <button mat-icon-button class="stars" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1" matTooltipPosition="above">
+        <mat-icon>
+          {{showIcon(i)}}
+        </mat-icon>
+      </button>
+      <button mat-raised-button type="submit" [disabled]="!reviewForm.valid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>

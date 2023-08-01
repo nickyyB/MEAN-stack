@@ -1,0 +1,89 @@
+<div class="container" *ngIf="user.type==='client'">
+  <mat-tab-group (selectedTabChange)="onTabChange($event)" [selectedIndex]="index">
+    <mat-tab label="1 - Basic Info" [disabled]="step1">
+      <mat-card >
+        <mat-card-header>
+          Step 1- Basic Info About Object
+        </mat-card-header>
+        <mat-card-content class="basic-info">
+          <mat-error>{{errorMessage}}</mat-error>
+          <form (ngSubmit)="submitBasicInfo()">
+            <mat-form-field>
+              <mat-label>Select a object type</mat-label>
+              <mat-select [(value)]="object.type" required (selectionChange)="resetError()">
+                <mat-option value="house">House</mat-option>
+                <mat-option value="condo">Condo</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Address" [(ngModel)]="object.address" name="address" required (keyup)="resetError()">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Number of Rooms" [(ngModel)]="object.numberOfRooms" name="numberOfRooms" required (keyup)="resetError()">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Square Footage" [(ngModel)]="object.squareFootage" name="squareFootage" required (keyup)="resetError()">
+            </mat-form-field>
+            <button mat-raised-button class="submit-button" type="submit" >Next</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="2 - Sketch" [disabled]="!step1 || step2">
+      <mat-card>
+        <mat-card-header>
+          Step 2 - Object Sketch
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+            <div>
+              <label>Width:</label>
+              <input type="number" [(ngModel)]="squareWidth" min="1" name="squareWidth">
+            </div>
+            <div>
+              <label>Height:</label>
+              <input type="number" [(ngModel)]="squareHeight" min="1" name="squareHeight">
+            </div>
+            <button (click)="addSquare()">OK</button>
+          </div>
+          <mat-error>{{errorMessage}}</mat-error>
+          <div #canvasContainer class="canvas-container" (mousemove)="onCanvasMouseMove($event)" (mouseup)="onCanvasMouseUp($event)">
+            <canvas #canvas [width]="canvasWidth" [height]="canvasHeight" (mousedown)="onCanvasMouseDown($event)"></canvas>
+          </div>
+            <button mat-raised-button class="submit-button" (click)="submitSketch()" >Save and Go Next</button>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="3 - Doors" [disabled]="!step2">
+      <mat-card>
+        <mat-card-header>
+          Step 3 - Add Doors Positions
+        </mat-card-header>
+        <mat-card-content>
+          <div>
+            <button (click)="addDoor()">Add Door</button>
+          </div>
+          <mat-error>{{errorMessage}}</mat-error>
+          <div #canvasContainer2 class="canvas-container" >
+            <canvas #canvas2 [width]="canvasWidth" [height]="canvasHeight" (mousemove)="onCanvasMouseMove($event)"
+                    (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp2($event)"></canvas>
+          </div>
+        </mat-card-content>
+        <button mat-raised-button class="submit-button" type="submit" (click)="submitObject()">Complete</button>
+      </mat-card>
+    </mat-tab>
+    <mat-tab label="File Upload">
+      <mat-card>
+        <mat-card-header>
+          Upload Object Model via JSON
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="onSubmit()" #uploadForm="ngForm">
+            <input type="file" accept=".json" (change)="onFileSelected($event)">
+            <button mat-raised-button class="submit-button" type="submit">Upload</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+  </mat-tab-group>
+</div>

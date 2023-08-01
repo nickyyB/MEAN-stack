@@ -1,0 +1,180 @@
+<div class="container">
+  <mat-tab-group #tabGroup (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Update Profile">
+      <ng-template matTabContent>
+        <div class="registration-content">
+          <mat-card>
+            <mat-card-content>
+              <h3>PROFILE</h3>
+              <mat-error>{{message}}</mat-error>
+              <h3 style="color: green">{{success}}</h3>
+              <ng-container *ngIf="type==='client'; else agency">
+                <form [formGroup]="form" (ngSubmit)="onSubmitClient()">
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Username" formControlName="username" required (keyup)="resetError()">
+                    <mat-error *ngIf="isFieldInvalid('username')">
+                      Username is a required field, (6-12 chars)
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Email" formControlName="email" required (keyup)="resetError()">
+                    <mat-error *ngIf="isFieldInvalid('email')">
+                      Email is a required field
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="First Name" formControlName="firstName" required>
+                    <mat-error *ngIf="isFieldInvalid('firstName')">
+                      First Name is a required field
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Last Name" formControlName="lastName" required>
+                    <mat-error *ngIf="isFieldInvalid('lastName')">
+                      Last Name is a required field
+                    </mat-error>
+                  </mat-form-field>
+                  <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Phone" formControlName="phone" required>
+                    <mat-error *ngIf="isFieldInvalid('phone')">
+                      Phone is a required field
+                    </mat-error>
+                  </mat-form-field>
+                  <button mat-raised-button class="submit-button" >Update</button>
+                </form>
+              </ng-container>
+            </mat-card-content>
+            <mat-card-content>
+              <div>
+                <h4>Profile image</h4>
+                <img [src]="imgUrl(image)">
+                <input type="file" accept="image/*" id="img" label="Avatar" (change)="handleImageUpload($event)">
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Change Password">
+      <ng-template matTabContent>
+        <span>{{message}}</span>
+        <form (ngSubmit)="changePassword()" #passwordForm="ngForm">
+          <mat-form-field>
+            <input matInput placeholder="Old Password" type="password" name="oldPassword" [(ngModel)]="oldPassword" required (keyup)="resetError()">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="New Password" type="password" name="newPassword" [(ngModel)]="newPassword" required (keyup)="resetError()">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Confirm New Password" type="password" name="confirmNewPassword" [(ngModel)]="confirmNewPassword" required (keyup)="resetError()">
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </form>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<ng-template #agency>
+  <ng-container *ngIf="type=='agency' else admin">
+    <form [formGroup]="form" (ngSubmit)="onSubmitAgency()">
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Username" formControlName="username" required (keyup)="resetError()">
+        <mat-error *ngIf="isFieldInvalid('username')">
+          Username is a required field (6-12 chars)
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required (keyup)="resetError()">
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Company Name" formControlName="name" required>
+        <mat-error *ngIf="isFieldInvalid('name')">
+          Company Name is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <textarea matInput placeholder="Description" formControlName="description" required
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="7"
+                  cdkAutosizeMaxRows="25">
+        </textarea>
+        <mat-error *ngIf="isFieldInvalid('description')">
+          Description is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Country" formControlName="country" required>
+        <mat-error *ngIf="isFieldInvalid('country')">
+          Country is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="City" formControlName="city" required>
+        <mat-error *ngIf="isFieldInvalid('city')">
+          City is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Street Name" formControlName="street" required>
+        <mat-error *ngIf="isFieldInvalid('street')">
+          Street Name is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Number" formControlName="number" required>
+        <mat-error *ngIf="isFieldInvalid('number')">
+          NUmber is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Phone" formControlName="phone" required>
+        <mat-error *ngIf="isFieldInvalid('phone')">
+          Phone is a required field
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="submit-button">Update</button>
+    </form>
+  </ng-container>
+</ng-template>
+
+<ng-template #admin>
+  <ng-container>
+    <form [formGroup]="form" (ngSubmit)="onSubmitAdmin()">
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Username" formControlName="username" required (keyup)="resetError()">
+        <mat-error *ngIf="isFieldInvalid('username')">
+          Username is a required field, (6-12 chars)
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required (keyup)="resetError()">
+        <mat-error *ngIf="isFieldInvalid('email')">
+          Email is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="First Name" formControlName="firstName" required>
+        <mat-error *ngIf="isFieldInvalid('firstName')">
+          First Name is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Last Name" formControlName="lastName" required>
+        <mat-error *ngIf="isFieldInvalid('lastName')">
+          Last Name is a required field
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Phone" formControlName="phone" required>
+        <mat-error *ngIf="isFieldInvalid('phone')">
+          Phone is a required field
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="submit-button" >Update</button>
+    </form>
+  </ng-container>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="container" *ngIf="user.type === 'agency' ">
+  <mat-card>
+    <mat-card-header>
+      Update Object Progress
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <button (click)="paintInRed()">In progress</button>
+      </div>
+      <div>
+        <button (click)="paintInGreen()">Finished</button>
+      </div>
+      <mat-error>{{errorMessage}}</mat-error>
+      <div #canvasContainer class="canvas-container" >
+        <canvas #canvas [width]="canvasWidth" [height]="canvasHeight" (mousemove)="onCanvasMouseMove($event)"
+                (mousedown)="onCanvasMouseDown($event)" (mouseup)="onCanvasMouseUp($event)"></canvas>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button class="submit-button" type="submit" (click)="onSubmit()">Update Progress</button>
+  </mat-card>
+</div>

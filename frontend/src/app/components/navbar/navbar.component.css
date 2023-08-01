@@ -1,0 +1,28 @@
+.mat-toolbar{
+  background-color: goldenrod;
+  color: white;
+  height: 150px;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.mat-button{
+  color: white;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.logo {
+  max-height: 90px;
+  max-width: 90px;
+}
+
+
+@media only screen and (max-width: 400px) {
+  .mat-toolbar {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}

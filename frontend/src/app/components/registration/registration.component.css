@@ -1,0 +1,48 @@
+.mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+}
+
+.registration-content {
+  padding: 60px 1rem;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.full-width-radio {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: goldenrod;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    color: goldenrod;
+    background-color: goldenrod;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color: gold;
+  }
+
+}
+
+.submit-button {
+  background-color: goldenrod;
+  color: white;
+}
+
+
+@media screen and (max-width: 402px) {
+
+  .submit-button {
+    margin-top: 5px;
+  }
+
+}

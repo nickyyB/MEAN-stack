@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <span><img class="logo" src="assets/logo.jpg"></span>
+  <div class="spacer"></div>
+  <ng-container *ngIf="isMobile; else desktopMenu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="">Home</a>
+      <a mat-menu-item *ngIf="!guest && userType!='admin'" routerLink="jobs">My Jobs</a>
+      <a mat-menu-item *ngIf="!guest && userType=='client'" routerLink="properties">My Objects</a>
+      <a mat-menu-item *ngIf="!guest && userType=='client'" routerLink="creat-property">Add object</a>
+      <a mat-menu-item *ngIf="!guest && userType=='admin'" routerLink="admin">Control Panel</a>
+      <a mat-menu-item *ngIf="!guest" routerLink="profile">Profile</a>
+      <a mat-menu-item *ngIf="!guest" (click)="logout()">Log out</a>
+      <a mat-menu-item *ngIf="guest" routerLink="registration">Sign up</a>
+      <a mat-menu-item *ngIf="guest" routerLink="login">Login</a>
+    </mat-menu>
+  </ng-container>
+
+  <ng-template #desktopMenu>
+    <a mat-button routerLink="">Home</a>
+
+    <ng-container *ngIf="guest; else logged">
+    <a mat-button routerLink="registration">Sign up</a>
+    <a mat-button routerLink="login">Login</a>
+    </ng-container>
+
+    <ng-template #logged>
+      <button mat-button [matMenuTriggerFor]="menu" *ngIf="userType=='client'">Objects</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="creat-property">Add object</button>
+        <button mat-menu-item routerLink="properties">My objects</button>
+      </mat-menu>
+      <a mat-button *ngIf="userType!='admin'" routerLink="jobs">My jobs</a>
+      <a mat-button *ngIf="userType=='admin'" routerLink="admin">Control Panel</a>
+      <a mat-button routerLink="profile">Profile</a>
+      <a mat-button (click)="logout()">Log out</a>
+    </ng-template>
+
+  </ng-template>
+</mat-toolbar>

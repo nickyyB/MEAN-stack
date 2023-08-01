@@ -1,0 +1,45 @@
+<mat-card *ngIf="action==='create'">
+  <mat-card-content>
+    <form (ngSubmit)="createWorker()" #reviewForm="ngForm" class="review">
+      <mat-form-field>
+        <textarea matInput placeholder="First Name" class="area" name="name" [(ngModel)]="name" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Last Name" class="area" name="surname" [(ngModel)]="surname" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Phone" class="area" name="phone" [(ngModel)]="contactPhone" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Email" class="area" name="email" [(ngModel)]="email" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Speciality" class="area" name="speciality" [(ngModel)]="speciality" required></textarea>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!reviewForm.valid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<mat-card  *ngIf="action==='update'">
+  <mat-card-content>
+    <form (ngSubmit)="updateWorker()" #reviewForm="ngForm" class="review">
+      <mat-form-field>
+        <textarea matInput placeholder="First Name" class="area" name="name" [(ngModel)]="worker.name" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Last Name" class="area" name="surname" [(ngModel)]="worker.surname" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Phone" class="area" name="phone" [(ngModel)]="worker.contactPhone" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Email" class="area" name="email" [(ngModel)]="worker.email" disabled></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Speciality" class="area" name="speciality" [(ngModel)]="worker.speciality" required></textarea>
+      </mat-form-field>
+      <button mat-raised-button type="submit" [disabled]="!reviewForm.valid">Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
